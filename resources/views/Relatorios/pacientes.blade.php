@@ -1,0 +1,1 @@
+pacientes.blade.php
