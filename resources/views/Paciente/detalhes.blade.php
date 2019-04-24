@@ -6,7 +6,9 @@
                 <div class="row">
                 		<div class="col s12 m12 l12">
                         <div class="card">
-                            <div class="card-content">
+                            <div class="card-content" align="center">
+                                
+                                <a href="{{ route('pacientesIRelatorio',$paciente->id) }}" class="waves-effect waves-grey btn m-b-xs"><i class="material-icons left">print</i>imprimir</a>
                                {{--  <p><strong> Detalhes {{ $paciente->name.' '.$paciente->apelido }} </strong></p> --}}
                             </div>
                         </div>

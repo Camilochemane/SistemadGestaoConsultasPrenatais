@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Patient;
+use RealRashid\SweetAlert\Facades\Alert;
 use App\Type;
 use App\Inquirie;
 use App\Http\Requests\PacienteValidation;
@@ -38,6 +39,7 @@ class PacienteController extends Controller
         $paciente->naturalidade             = $request->input('naturalidade');
         $paciente->telefone                 = $request->input('telefone');
         $paciente->filiacao                 = $request->input('filiacao');
+        $paciente->estado                   = 'em processo';
 
                 if(!$pacienteCodigo){
                     $paciente->codigoPaciente   = $ano.'0001';
@@ -46,7 +48,13 @@ class PacienteController extends Controller
                 }
         $paciente->save();
 
-    	return redirect()->route('listarPaciente');
+    	Alert::success('Gravado com sucesso')->persistent('Okay');
+        // $view     = view('Paciente.fichaPrenatal', compact('paciente'));
+        // $pdf      = \App::make('dompdf.wrapper');
+        // $pdf->loadHTML($view);
+        // return $pdf->stream('paciente');
+        return redirect()->back();
+            
     }
 
      public function pacientDdetalhes($id)
@@ -74,9 +82,26 @@ class PacienteController extends Controller
     public function relatorio()
 {
         $paciente = Patient::all();
-        $view     = view('Paciente.paciente', compact('paciente'));
+        $view     = view('Relatorios.pacientes', compact('paciente'));
         $pdf      = \App::make('dompdf.wrapper');
         $pdf->loadHTML($view);
         return $pdf->stream('paciente');
 }
+
+    public function pacientesIRelatorio($id)
+    {
+        $paciente = Patient::find($id);
+        $view     = view('Relatorios.pacientes', compact('paciente'));
+        $pdf      = \App::make('dompdf.wrapper');
+        $pdf->loadHTML($view);
+        return $pdf->stream('paciente');
+    }
+
+
+    public function fichaPrenatal($id)
+    {
+       $paciente = Patient::find($id);
+
+       return view('Relatorios.pacientes', compact('paciente'));
+    }
 }

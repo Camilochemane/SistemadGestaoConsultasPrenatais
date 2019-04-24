@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Type;
-use Alert;
-// use RealRashid\SweetAlert\Facades\Alert;
+// use Alert;
+use RealRashid\SweetAlert\Facades\Alert;
 use App\Http\Requests\UserValidation;
 use App\Http\Requests\EditUserValidation;
 
@@ -16,10 +16,6 @@ class UserController extends Controller
 
     public function formUtilizador()
     {  
-        Alert::info('Info Title', 'Info Message');
-        // Alert::success('Success Message', 'Gravado com sucesso')->persistent("oky");
-        
-
         
         $tipo = Type::where('id', '<>', 3)->get();
         return view('Utilizador.adicionar', compact('tipo'));
@@ -27,8 +23,6 @@ class UserController extends Controller
 
     public function addUtilizador(UserValidation $request)
     {   
-         Alert::success('Success Title', 'Success Message')->persistent('Close');
-        
         $user                   = new User;
         $user->Apelido          = $request->input('Apelido');
         $user->name             = $request->input('name');
@@ -44,8 +38,8 @@ class UserController extends Controller
         $user->descricao        = $request->input('descricao');
         $user->save();
 
-            return redirect()->route('listarUtilizadores')
-                                ->with('success', 'gravado com sucesso');
+        Alert::success('Gravado com sucesso')->persistent('Okay');
+            return redirect()->back();                        
         
     }
 
@@ -58,9 +52,7 @@ class UserController extends Controller
 
 
     public function listarUtilizadores(User $user)
-    {   
-        Alert::success('Success Message', 'Gravado com sucesso')->persistent("oky");
-        
+    {  
         $tipo                   = Type::all();
         $user                   = $user->where('type_id', '<>', 3)->paginate($this->totalPaginate);
         $i                      = 1;
@@ -76,7 +68,8 @@ class UserController extends Controller
 
         $user->update();
        
-       return redirect()->back();
+       Alert::success('Bloqueado com sucesso')->persistent('Okay');
+            return redirect()->back();    
     }
 
     public function getUnlock(Request $request, $id)
@@ -85,8 +78,9 @@ class UserController extends Controller
 
         $user->estado = 'Activo';
         $user->update();
-       
-       return redirect()->back();
+
+      Alert::success('Desbloqueado com sucesso')->persistent('Okay');
+            return redirect()->back();
     }
 
 

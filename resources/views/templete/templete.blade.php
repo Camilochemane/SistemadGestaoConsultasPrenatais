@@ -42,7 +42,7 @@
 
                         @yield('content')
                         
-
+                        @include('sweetalert::alert')
                          
 
                 @include('templete.footer.footer')
@@ -78,7 +78,9 @@
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.0.1/sweetalert.min.js"></script>
                 
-                @include('sweet::alert')
+                {{-- @include('sweet::alert') --}}
+
+                        @yield('script')
 
             {{-- @include('sweetalert::alert') --}}
        

@@ -8,9 +8,10 @@ use App\Http\Requests\AgendaValidation;
 use App\Specialtie;
 use App\User;
 use App\Type;
+use RealRashid\SweetAlert\Facades\Alert;
 use App\Schedules;
 use App\Inquirie;
-use Alert;
+// use Alert;
 
 
 
@@ -50,9 +51,8 @@ class MedicoController extends Controller
         $user->descricao        = $request->input('descricao');
         $user->save();
 
-         return redirect()->route('formAgenda', compact('user'));
-        // return view('Medico.agenda', compact('user'));
-    	// // return redirect()->route('listarMedicos');
+         Alert::success('Gravado com sucesso')->persistent('Okay');
+            return redirect()->back();
     }
 
     public function pesquisarMedico(Request $request, User $user)
@@ -78,17 +78,25 @@ class MedicoController extends Controller
 
 
     public function addAgenda(AgendaValidation $request)
-    {
+    {   
+        $existeAgenda            = Schedules::where('user_id', '=', $request->input('user_id'))
+                                            ->where('diaSemana', '=', $request->input('diaSemana'))
+                                                ->first();
+        if($existeAgenda){
+            Alert::error('Erro ao gravar', 'o medico ja possui uma agenda para a data e hora escolhida!!')->persistent('Okay');
+        return redirect()->back();
+        }else{
         $agenda                  = new Schedules();
         $agenda->diaSemana       = $request->input('diaSemana');
         $agenda->horaInicio      = $request->input('horaInicio');
-        $agenda->horaFim      = $request->input('horaFim');
-        $agenda->reserva         = '15:30';
+        $agenda->horaFim         = $request->input('horaFim');
+        $agenda->reserva         = 'agendado';
         $agenda->user_id         = $request->input('user_id');
 
         $agenda->save();
-
-        return redirect()->route('formAgenda');
+         Alert::success('Gravado com sucesso')->persistent('Okay');
+        return redirect()->back();
+        }
     }
 
     public function detalhesAgenda($id)

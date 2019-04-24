@@ -154,6 +154,11 @@ Route::group(['prefix' => 'paciente', 'middleware' => 'auth'], function(){
 			'uses' => 'PacienteController@pacientDdetalhes',
 			'as'   => 'pacientDdetalhes'
 		]);
+
+		Route::get('relatorio/{id}', [
+			'uses' => 'PacienteController@pacientesIRelatorio',
+			'as'   => 'pacientesIRelatorio'
+		]);
 	} );
 
 

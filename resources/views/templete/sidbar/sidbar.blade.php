@@ -87,7 +87,7 @@
                         <a class="collapsible-header waves-effect waves-grey"><i class="material-icons">reorder</i>Relatórios<i class="nav-drop-icon material-icons">keyboard_arrow_right</i></a>
                         <div class="collapsible-body">
                             <ul>
-                                <li><a href="{{ route('formUtilizador') }}">Registar</a></li>
+                                <li><a href="#">Registar</a></li>
                                 <li><a href="{{ route('listarUtilizadores') }}">Listar</a></li>
                             </ul>
                         </div>

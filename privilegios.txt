@@ -1,0 +1,29 @@
+Privilegios
+
+administrador
+
+cria administrador, medico, secretaria, enfermeiro
+cria regras, grupos, privilegios
+atribui horarios
+confirma apagamento de pacientes por parte da secretaria
+
+Secretaria 
+marca\cancela consultas
+cria pacientes
+
+Enfermeiro
+
+verifica sua agenda
+prescreve diagnostico
+requisita exame\testes
+
+
+Medico 
+verifica sua agenda
+prescreve diagnostico\exame
+Elabora diagnostico final da consulta
+Prescreve medicaçao
+
+Paciente
+marca\cancela sua consulta
+visualisa resultados facultados

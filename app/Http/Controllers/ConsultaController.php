@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Patient;
 use App\Schedules;
+use RealRashid\SweetAlert\Facades\Alert;
 use App\User;
 use App\Inquirie;
 use App\Http\Requests\ConsultaValidation;
@@ -93,7 +94,8 @@ class ConsultaController extends Controller
                          $consulta->estado           = 'Pendente';
 
                          $consulta->save();
-                         return redirect()->route('listarConsultas');  
+                        Alert::success('Gravado com sucesso')->persistent('Okay');
+                           return redirect()->back();
                     }else{
 
                         return redirect()->back()->with('error', 'O Medico '.$nomeMedica->name.' ja possui uma consulta para a hora selecionada, verfique a agenda medica');
