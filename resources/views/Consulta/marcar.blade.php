@@ -1,15 +1,15 @@
 @extends('templete.templete')
 
 @section('content')
-	<main class="mn-inner">
+    <main class="mn-inner">
                 <div class="row">
                     <div class="col s12">
-                        <div class="page-title">Gestante</div>
+                        <div class="page-title">Consultas</div>
                     </div>
                     <div class="col s12 m12 l12">
                         <div class="card">
                             <div class="card-content">
-                                <span class="card-title">Formulário de registo das Gestantes</span><br>
+                                <span class="card-title">Formulário de marcação de consultas</span><br>
                                 <div class="row">
                                     {!!Form::open(['route'=>'addConsulta', 'method' => 'POST', 'class' => 'col s12'])!!}
                                     @csrf
@@ -20,7 +20,7 @@
                                                         <div class="row">
                                                             <div class="input-field col m12 s12">
                                                                <select class="initialized" name="paciente_id">
-                                                                    <option disabled="" selected="">--Selecione o paciente--</option>
+                                                                 <option disabled="" selected=""> -- Selecione o paciente -- </option>
                                                                     @foreach($paciente as $pacientes)
                                                                         <option value="{{ $pacientes->id }}">{{ $pacientes->name }}</option>
                                                                     @endforeach
@@ -31,11 +31,11 @@
                                                             </div>
                                                         </div>
                                                     </div>
-			                                   <div class="col m6">
-			                                   <div class="row">
+                                               <div class="col m6">
+                                               <div class="row">
                                                             <div class="input-field col m12 s12">
                                                                <select class="initialized" name="user_id">
-                                                                    <option disabled="" selected="">--Selecione o medico--</option>
+                                                                    <option disabled="" selected=""> -- Selecione o médico -- </option>
                                                                     @foreach($user as $users)
                                                                         <option value="{{ $users->id }}">{{ $users->name }}</option>
                                                                     @endforeach

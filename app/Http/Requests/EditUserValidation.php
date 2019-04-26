@@ -31,7 +31,7 @@ class EditUserValidation extends FormRequest
             'endereco'             =>   'required',
             'sexo'                 =>   'required',
             'telefone'             =>   'required|max:9',
-            'email'                =>   'required|string|email|max:255|unique:users',
+            'email'                =>   'required|string|email|max:255',
             'password'             =>   'min:6|confirmed',
 
         ];

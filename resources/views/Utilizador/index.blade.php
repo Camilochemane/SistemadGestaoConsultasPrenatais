@@ -4,7 +4,7 @@
 
 	<main class="mn-inner">
                 <div class="row">
-                	<p>Admin</p>
+                	User
                 </div>
     </main>
 

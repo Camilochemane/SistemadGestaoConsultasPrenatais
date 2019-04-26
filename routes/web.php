@@ -18,7 +18,7 @@ Route::get('/', function () {
   //                   'from'  => 'Carlitos',
   //                   'text'  => 'Mensagem enviada por '.config('Carlitos', ' Carlitos Hair Internactional').' Caro cliente foste Bloqueado pelo numro excessivo de reservas nao compridas'
   //                   ]); 
-  //   return view('welcome');
+    return view('welcome');
     // return view('home.home');
 });
 
@@ -97,9 +97,9 @@ Route::group(['prefix' => 'user/medico', 'middleware' => 'auth'], function(){
 		'as'   => 'addMedico'
 	]);
 
-	Route::get('especialidade', [
-		'uses' => 'MedicoController@especialidade',
-		'as'   => 'especialidade'
+	Route::post('especialidade', [
+		'uses' => 'MedicoController@addEspecialidade',
+		'as'   => 'addEspecialidade'
 	]);
 
 	Route::get('form/agenda', [
@@ -172,6 +172,11 @@ Route::group(['prefix' => 'paciente', 'middleware' => 'auth'], function(){
 		Route::get('listar', [
 			'uses' => 'ConsultaController@listarConsultas',
 			'as'   => 'listarConsultas'
+		]);
+
+		Route::get('listar/medico', [
+			'uses' => 'ConsultaController@listarConsultasmedico',
+			'as'   => 'listarConsultasmedico'
 		]);
 
 		Route::post('add', [

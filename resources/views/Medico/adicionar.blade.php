@@ -10,7 +10,7 @@
                     <div class="col s12 m12 l12">
                         <div class="card">
                             <div class="card-content">
-                                <span class="card-title">Formulário de registo de Medico</span><br>
+                                <span class="card-title">Formulário de registo de Médico</span><br>
                                 <div class="row">
                                     {!!Form::open(['route'=>'addMedico', 'method' => 'POST', 'class' => 'col s12'])!!}
                                     @csrf
@@ -39,6 +39,7 @@
                                                     </div>
                                   <div class="col m6">
                                    <div class="row">
+                                                         <div class="col m10">
                                                             <div class="input-field col m12 s12">
                                                                  <select class="initialized" name="specialties_id">
                                                                 <option disabled="" selected="">--Selecione especialidade--</option>
@@ -47,6 +48,10 @@
                                                                 @endforeach
                                                             </select>
                                                             </div>
+                                                        </div>
+                                                        <div class="col m2">
+                                                            <a href="#modal1" class="modal-trigger btn tooltipped" data-position="right" data-delay="50" data-tooltip="adicionar esoecialidade">+</a>
+                                                        </div>
 
                                                             <input type="hidden" name="type_id" value="3" >
 
@@ -93,3 +98,20 @@
             </main>
 
 @endsection
+
+<div id="modal1" class="modal">
+ {!!Form::open(['route'=>'addEspecialidade', 'method' => 'POST', 'class' => 'col s12'])!!}
+    <div class="modal-content">
+        <h4>Registar especialidade do medico</h4>
+        <div class="row">
+            <div class="input-field col m12 s12">
+                <input id="address" placeholder="Especialidade" name="specialidade" type="text">
+             </div>
+        </div>
+    </div>
+    <hr>
+    <div class="modal-footer">
+         <button  type="submit" class="modal-action modal-close waves-effect waves-blue btn-flat"> Gravar</button>
+    </div>
+ {{ Form::close() }}
+</div>

@@ -32,7 +32,7 @@ class UserController extends Controller
         $user->sexo             = $request->input('sexo');
         $user->type_id          = $request->input('type_id');
         $user->email            = $request->input('email');
-        $user->password         = $request->input('password');
+        $user->password         = bcrypt($request->input('password'));
         $user->specialties_id   = $request->input('specialties_id');
         $user->estado           = 'Activo';
         $user->descricao        = $request->input('descricao');
@@ -87,7 +87,7 @@ class UserController extends Controller
     public function formEditar(User $user, $id)
     {   
         $user = $user->find($id);
-        $tipo = Type::all();
+        $tipo = Type::where('id', '<>', 3)->get();
 
         return view('Utilizador.editar', compact('user', 'tipo'));
         
@@ -96,22 +96,22 @@ class UserController extends Controller
     public function editarUser(EditUserValidation $request, $id)
     {
         $user                = User::find($id);
-        $user->Apelido       = $request->input('Apelido');
-        $user->name          = $request->input('name');
-        $user->telefone      = $request->input('telefone');
-        $user->endereco      = $request->input('endereco');
-        $user->dataNasc      = $request->input('dataNasc');
-        $user->sexo          = $request->input('sexo');
-        $user->type_id       = $request->input('type_id');
-        $user->email         = $request->input('email');
-        $user->password      = $request->input('password');
-        $user->estado        = 'Activo';
-        $user->descricao     = $request->input('descricao');
-
+        $user->Apelido          = $request->input('Apelido');
+        $user->name             = $request->input('name');
+        $user->telefone         = $request->input('telefone');
+        $user->endereco         = $request->input('endereco');
+        $user->dataNasc         = $request->input('dataNasc');
+        $user->sexo             = $request->input('sexo');
+        $user->type_id          = $request->input('type_id');
+        $user->email            = $request->input('email');
+        $user->password         = bcrypt($request->input('password'));
+        $user->specialties_id   = $request->input('specialties_id');
+        $user->estado           = 'Activo';
+        $user->descricao        = $request->input('descricao');
         $user->update();
 
-        return redirect()->route('listarUtilizadores')
-                                ->with('success', 'editado com sucesso');
+        Alert::success('Editado com sucesso')->persistent('Okay');
+            return redirect()->back();   
 
     }
 

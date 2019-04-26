@@ -5,12 +5,12 @@
         <main class="mn-inner">
                 <div class="row">
                     <div class="col s12">
-                        <div class="page-title">Gestante</div>
+                        <div class="page-title">Paciente</div>
                     </div>
                     <div class="col s12 m12 l12">
                         <div class="card">
                             <div class="card-content">
-                                <span class="card-title">Formulário de registo das Gestantes</span><br>
+                                <span class="card-title">Formulário de registo dos pacientes</span><br>
                                 <div class="row">
                                     {!!Form::open(['route'=>'addPaciente', 'method' => 'POST', 'class' => 'col s12'])!!}
                                     @csrf

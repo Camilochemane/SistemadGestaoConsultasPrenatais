@@ -1,7 +1,11 @@
 @extends('templete.templete')
 
-@section('content')
-	
-		Camilo Chemane ja estou aqui 
+@section('content')	
+
+	<main class="mn-inner">
+                <div class="row">
+                <p>Detalhes das consultas</p>	
+                </div>
+    </main>
 
 @endsection

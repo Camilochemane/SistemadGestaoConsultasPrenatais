@@ -118,8 +118,10 @@ class MedicoController extends Controller
                                                 ->where('estado', '<>', 'Pendente')->get();
         return view('Medico.detalhes', compact('detalhesSegunda','detalhesTerca','detalhesQuarta','detalhesQuinta','detalhesSexta', 'medico', 'consultasPendente', 'consultasRealizadas'));
     }
-    public function especialidadeMedico()
-    {
-        return view('Medico.especialidade');
+    public function addEspecialidade()
+    {   
+        
+        Alert::success('Gravado com sucesso')->persistent('Okay');
+        return redirect()->route('formMedico');
     }
 }

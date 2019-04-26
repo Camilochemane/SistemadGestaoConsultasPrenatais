@@ -40,7 +40,6 @@
                 <ul class="sidebar-menu collapsible collapsible-accordion" data-collapsible="accordion">
                     <li class="no-padding"><a class="waves-effect waves-grey" href="{{ url('/home') }}"><i class="material-icons">desktop_windows</i>Home</a></li>
                     <hr>
-                    @if(Auth::user()->id == 1)
                     <li class="no-padding">
                         <a class="collapsible-header waves-effect waves-grey"><i class="material-icons">perm_identity</i>Utilizadores<i class="nav-drop-icon material-icons">keyboard_arrow_right</i></a>
                         <div class="collapsible-body">
@@ -58,7 +57,7 @@
                                 <li><a href="{{ route('formMedico') }}">Registar</a></li>
                                 <li><a href="{{ route('listarMedicos') }}">Listar</a></li>
                                 <li><a href="{{ route('formAgenda') }}">Agendar</a></li>
-                                <li><a href="#">Especialidade</a></li>
+                                <li><a href="{{ route('especialidade') }}">Especialidade</a></li>
                             </ul>
                         </div>
                     </li>
@@ -94,97 +93,6 @@
                         </div>
                     </li>
                     <hr>
-                @elseif(Auth::user()->id == 2)
-                <li class="no-padding">
-                        <a class="collapsible-header waves-effect waves-grey"><i class="material-icons">perm_identity</i>Medico<i class="nav-drop-icon material-icons">keyboard_arrow_right</i></a>
-                        <div class="collapsible-body">
-                            <ul>
-                                <li><a href="{{ route('formMedico') }}">Registar</a></li>
-                                <li><a href="{{ route('listarMedicos') }}">Listar</a></li>
-                                <li><a href="{{ route('formAgenda') }}">Agendar</a></li>
-                                <li><a href="#">Especialidade</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                    <hr>
-
-                    <li class="no-padding">
-                        <a class="collapsible-header waves-effect waves-grey"><i class="material-icons">perm_identity</i>Paciente<i class="nav-drop-icon material-icons">keyboard_arrow_right</i></a>
-                        <div class="collapsible-body">
-                            <ul>
-                                <li><a href="{{ route('formPaciente') }}">Registar</a></li>
-                                <li><a href="{{ route('listarPaciente') }}">Listar</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                    <hr>
-                    <li class="no-padding">
-                        <a class="collapsible-header waves-effect waves-grey"><i class="material-icons">queue</i>Consultas<i class="nav-drop-icon material-icons">keyboard_arrow_right</i></a>
-                        <div class="collapsible-body">
-                            <ul>
-                                <li><a href="{{ route('formMarcarconsulta') }}">Marcar</a></li>
-                                <li><a href="{{ route('listarConsultas') }}">Listar</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                    <hr>
-                     <li class="no-padding">
-                        <a class="collapsible-header waves-effect waves-grey"><i class="material-icons">reorder</i>Relatórios<i class="nav-drop-icon material-icons">keyboard_arrow_right</i></a>
-                        <div class="collapsible-body">
-                            <ul>
-                                <li><a href="{{ route('formUtilizador') }}">Registar</a></li>
-                                <li><a href="{{ route('listarUtilizadores') }}">Listar</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                    <hr>
-                    @elseif(Auth::user()->id == 3)
-
-                    {{-- <li class="no-padding">
-                        <a class="collapsible-header waves-effect waves-grey"><i class="material-icons">perm_identity</i>Medico<i class="nav-drop-icon material-icons">keyboard_arrow_right</i></a>
-                        <div class="collapsible-body">
-                            <ul>
-                                <li><a href="{{ route('formMedico') }}">Registar</a></li>
-                                <li><a href="{{ route('listarMedicos') }}">Listar</a></li>
-                                <li><a href="{{ route('formAgenda') }}">Agendar</a></li>
-                                <li><a href="#">Especialidade</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                    <hr> --}}
-
-                    {{-- <li class="no-padding">
-                        <a class="collapsible-header waves-effect waves-grey"><i class="material-icons">perm_identity</i>Paciente<i class="nav-drop-icon material-icons">keyboard_arrow_right</i></a>
-                        <div class="collapsible-body">
-                            <ul>
-                                <li><a href="{{ route('formPaciente') }}">Registar</a></li>
-                                <li><a href="{{ route('listarPaciente') }}">Listar</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                    <hr> --}}
-                    <li class="no-padding">
-                        <a class="collapsible-header waves-effect waves-grey"><i class="material-icons">queue</i>Consultas<i class="nav-drop-icon material-icons">keyboard_arrow_right</i></a>
-                        <div class="collapsible-body">
-                            <ul>
-                                <li><a href="{{ route('listarConsultasmedico') }}">Listar</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                    <hr>
-                     <li class="no-padding">
-                        <a class="collapsible-header waves-effect waves-grey"><i class="material-icons">reorder</i>Relatórios<i class="nav-drop-icon material-icons">keyboard_arrow_right</i></a>
-                        <div class="collapsible-body">
-                            <ul>
-                                <li><a href="{{ route('formUtilizador') }}">Registar</a></li>
-                                <li><a href="{{ route('listarUtilizadores') }}">Listar</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                    <hr>
-                    
-                    @endif
-
                 </ul>
                 <div class="footer">
                     <p class="copyright">Steelcoders ©</p>

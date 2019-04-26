@@ -14,8 +14,11 @@
                             {!!Form::open(['route'=>'pesquisarMedico', 'method' => 'POST', 'class' => 'col s12'])!!}
                                     @csrf
                                 <div class="row">
-                                    <div class="input-field col s3">
+                                    <div class="input-field col s2">
                                         <p>Lista dos medicos</p>
+                                    </div>
+                                    <div class="input-field col s1" align="left">
+                                         <a class=" tooltipped" data-position="right" data-delay="50" data-tooltip="Imprimir lista dos utilizadores" href="#"><i class="material-icons left">print</i></a>
                                     </div>
                                 
                                     <div class="input-field col s9">

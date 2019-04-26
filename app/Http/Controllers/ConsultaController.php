@@ -9,6 +9,7 @@ use RealRashid\SweetAlert\Facades\Alert;
 use App\User;
 use App\Inquirie;
 use App\Http\Requests\ConsultaValidation;
+use Auth;
 
 
 class ConsultaController extends Controller
@@ -31,6 +32,15 @@ class ConsultaController extends Controller
         $consulta       = $consulta->paginate($this->totalPaginate);
         $i              = 1;
     	return view('Consulta.listar', compact('consulta', 'i', 'paciente', 'medico'));
+    }
+     public function listarConsultasmedico(Inquirie $consulta)
+    {
+        $paciente       = Patient::all();
+        $medico         = User::where('type_id', 3)->get();
+        $consulta       = $consulta->where('user_id', '=', Auth::user()->id)
+                                          ->paginate($this->totalPaginate);
+        $i              = 1;
+      return view('Consulta.listar', compact('consulta', 'i', 'paciente', 'medico'));
     }
 
     public function addConsulta(ConsultaValidation $request)
@@ -74,7 +84,8 @@ class ConsultaController extends Controller
                                                  ->first();
         if(!$existeDataSemana){
 
-             return redirect()->back()->with('error', 'O medico na trabalha nas ' .$diaDasemanaEscolhido);
+              Alert::error('Erro ao gravar', 'O medico não trabalha nas ' .$diaDasemanaEscolhido. ' por favor verfique a agenda do mesmo!!')->persistent('Okay');
+             return redirect()->back();
         }else{ 
             
             if($horaConsulta >= $existeDataSemana->horaInicio && $horaConsulta <= $existeDataSemana->horaFim) {
@@ -97,12 +108,14 @@ class ConsultaController extends Controller
                         Alert::success('Gravado com sucesso')->persistent('Okay');
                            return redirect()->back();
                     }else{
-
-                        return redirect()->back()->with('error', 'O Medico '.$nomeMedica->name.' ja possui uma consulta para a hora selecionada, verfique a agenda medica');
+                      
+                        Alert::error('Erro ao gravar', 'O dia e a hora selecionada do/a medico/a '.$nomeMedica->name.' ja se encontra ocupado')->persistent('Okay');
+                        return redirect()->back();
                     }
 
             }else{
-              return redirect()->back()->with('error', 'Por Favor escolha outra hora, pode consultar na agenda do medico.');  
+                Alert::error('Erro ao gravar', 'A hora escolhida esta fora do entervalo da agenda medica!! por favor escolha outra hora')->persistent('Okay');
+              return redirect()->back();  
             }
 
         }                                    
@@ -120,6 +133,8 @@ class ConsultaController extends Controller
       $detalhesConsulta->estado      = 'Cancelado';
 
       $detalhesConsulta->update();
+
+     Alert::success('Cancelado com sucesso')->persistent('Okay');
 
       return redirect()->back();
     }

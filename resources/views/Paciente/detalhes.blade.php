@@ -6,9 +6,11 @@
                 <div class="row">
                 		<div class="col s12 m12 l12">
                         <div class="card">
-                            <div class="card-content" align="center">
+                            <div class="card-content" align="left">
                                 
-                                <a href="{{ route('pacientesIRelatorio',$paciente->id) }}" class="waves-effect waves-grey btn m-b-xs"><i class="material-icons left">print</i>imprimir</a>
+                              {{--   <a class="" href="{{ route('pacientesIRelatorio',$paciente->id) }}"><i class="material-icons left">print</i>.</a> --}}
+
+                                <a class=" tooltipped" data-position="right" data-delay="50" data-tooltip="Imprimir dados do paciente" href="{{ route('pacientesIRelatorio',$paciente->id) }}">.<i class="material-icons left">print</i></a>
                                {{--  <p><strong> Detalhes {{ $paciente->name.' '.$paciente->apelido }} </strong></p> --}}
                             </div>
                         </div>
@@ -83,10 +85,11 @@
                                       <td>{{ $consultasPendentes->estado }}</td>
 
                                       <td>
-                                        @if($consultasPendentes->estado != 'Cancelada')
-                                        <a href="{{ route('userBloqueiar', $consultasPendentes->id) }}" class="waves-effect waves-light btn red m-b-xs">Cancelar</a>
+                                        @if($consultasPendentes->estado == 'Cancelado')
+
+                                         <a href="#" class="waves-effect  disabled  waves-light btn red m-b-xs">Cancelar</a>
                                         @else
-                                            <a class="btn-flat disabled m-b-xs">Cancelar</a>
+                                           <a href="{{ route('cancelarConsulta', $consultasPendentes->id) }}" class="waves-effect waves-light btn red m-b-xs">Cancelar</a>
                                         @endif
                                         </td>
                                     </tr>

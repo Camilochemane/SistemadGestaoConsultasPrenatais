@@ -5,12 +5,12 @@
         <main class="mn-inner">
                 <div class="row">
                     <div class="col s12">
-                        <div class="page-title">Medico</div>
+                        <div class="page-title">Médico</div>
                     </div>
                     <div class="col s12 m12 l12">
                         <div class="card">
                             <div class="card-content">
-                                <span class="card-title">Agenda medica</span><br>
+                                <span class="card-title">Agenda médico</span><br>
                                 <div class="row">
                                     {!!Form::open(['route'=>'addAgenda', 'method' => 'POST', 'class' => 'col s12'])!!}
                                     @csrf
