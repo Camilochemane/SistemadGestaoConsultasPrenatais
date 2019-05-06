@@ -197,6 +197,11 @@ Route::group(['prefix' => 'paciente', 'middleware' => 'auth'], function(){
 			'uses' => 'ConsultaController@cancelarConsulta',
 			'as'   => 'cancelarConsulta'
 		]);
+
+		Route::get('relatorios', [
+			'uses' => 'ConsultaController@relatorioConsulta',
+			'as'   => 'relatorioConsulta'
+ 		]);
 	});
 	
 

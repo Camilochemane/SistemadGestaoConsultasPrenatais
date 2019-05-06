@@ -161,14 +161,16 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-        Collective\Html\HtmlServiceProvider::class,
-        RealRashid\SweetAlert\SweetAlertServiceProvider::class,
-        Nexmo\Laravel\NexmoServiceProvider::class,
-        Barryvdh\DomPDF\ServiceProvider::class,
 
         /*
          * Package Service Providers...
          */
+        Collective\Html\HtmlServiceProvider::class,
+        RealRashid\SweetAlert\SweetAlertServiceProvider::class,
+        Nexmo\Laravel\NexmoServiceProvider::class,
+        Barryvdh\DomPDF\ServiceProvider::class,
+        ConsoleTVs\Charts\ChartsServiceProvider::class,
+
 
         /*
          * Application Service Providers...
@@ -231,6 +233,7 @@ return [
         'Alert' => RealRashid\SweetAlert\Facades\Alert::class,
         'Nexmo' => Nexmo\Laravel\Facade\Nexmo::class,
         'PDF' => Barryvdh\DomPDF\Facade::class,
+        'Charts' => ConsoleTVs\Charts\Facades\Charts::class,
 
 
     ],

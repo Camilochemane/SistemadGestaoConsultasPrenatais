@@ -10,6 +10,8 @@ use App\User;
 use App\Inquirie;
 use App\Http\Requests\ConsultaValidation;
 use Auth;
+use DB;
+use Charts;
 
 
 class ConsultaController extends Controller
@@ -105,7 +107,7 @@ class ConsultaController extends Controller
                          $consulta->estado           = 'Pendente';
 
                          $consulta->save();
-                        Alert::success('Gravado com sucesso')->persistent('Okay');
+                        Alert::success('Marcado com sucesso')->persistent('Okay');
                            return redirect()->back();
                     }else{
                       
@@ -155,4 +157,15 @@ class ConsultaController extends Controller
 
         $consulta                = $consulta->paginate($this->totalPaginate);
     }
+
+
+        public function relatorioConsulta()
+{        
+        $consultas = Inquirie::all();
+        $view     = view('Admin.relatorio', compact('consultas'));
+        $pdf      = \App::make('dompdf.wrapper');
+        $pdf->loadHTML($view);
+        return $pdf->stream('consultas');
+}
+
 }

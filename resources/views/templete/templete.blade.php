@@ -26,6 +26,8 @@
         <!-- Theme Styles -->
         {{Html::style('assets/css/alpha.min.css')}}
         {{Html::style('assets/css/custom.css')}}
+
+        {{-- {{ Charts::styles()  }} --}}
         {{--  <link href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.0.1/sweetalert.min.css" rel="stylesheet"> --}}
         
     </head>
