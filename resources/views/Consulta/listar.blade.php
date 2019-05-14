@@ -18,7 +18,7 @@
                                         <p>Lista das consultas marcadas</p>
                                     </div>
                                     <div class="input-field col s1" align="left">
-                                         <a class=" tooltipped" data-position="right" data-delay="50" data-tooltip="Imprimir lista dos utilizadores" href="#"><i class="material-icons left">print</i></a>
+                                         <a class=" tooltipped" data-position="right" data-delay="50" data-tooltip="Imprimir lista dos utilizadores" href="{{ route('relatorioConsulta') }}"><i class="material-icons left">print</i></a>
                                     </div>
                                 
                                     <div class="input-field col s8">

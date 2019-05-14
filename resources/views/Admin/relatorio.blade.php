@@ -20,7 +20,7 @@
               </div>
         	<div class="login-content" align="center">
         	 <a href="#" class="logo">
-                <img src="assets/images/moz.png" width="100" alt="" />
+                <img src="assets/images/moz.png" width="60" alt="" />
             </a>  
             <h3>República de Moçambique</h3>
             <h3>Unidade Sanitária Polana Caniço</h3>

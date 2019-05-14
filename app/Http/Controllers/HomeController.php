@@ -10,6 +10,7 @@ use App\Type;
 use RealRashid\SweetAlert\Facades\Alert;
 use App\Schedules;
 use App\Inquirie;
+use App\Patient;
 use DB;
 // use ConsoleTVs\Charts\Features\Chartjs\Charts;
 use Charts;
@@ -36,10 +37,17 @@ class HomeController extends Controller
      */
     public function index()
     {
+       
+
+
         if (Auth::user()->id == 1) {
+        $totalConsultas       =  Inquirie::count();  
+        $totalMedicos         = User::where('type_id', '=' , 3)->count();
+        $totalPacientes       = Patient::count();
 
         $consultP         = [];
         $consultC         = [];
+        $consultPer       = [];
         $consulta         = Inquirie::where(DB::raw("(DATE_FORMAT(created_at,'%Y'))"),date('Y'))
                                   ->where('inquiries.estado', '=', 'Pendente')
                                   ->get();
@@ -60,12 +68,22 @@ class HomeController extends Controller
                                   ->responsive(false)
                                   ->groupByMonth(date('Y'), true);
 
+        $consulta         = Inquirie::where(DB::raw("(DATE_FORMAT(created_at,'%Y'))"),date('Y'))
+                                  ->where('inquiries.estado', '=', 'Pendente')
+                                  ->get();
+        $consultasPer       = Charts::database($consulta, 'Donut', 'highcharts')
+                                  ->title("Dados da consultas em percentagem")
+                                  ->elementLabel("Total das consultas")
+                                  ->dimensions(600, 500)
+                                  ->responsive(true)
+                                  ->groupByMonth(date('Y'), true);
 
- 
+        $consultPer['consultasPer']     = $consultasPer;
         $consultP['consultasPendentes'] = $consultasPendentes;
         $consultC['consultasCanceladas'] = $consultasCanceladas;
 
-           return view('Admin.index',$consultP, $consultC);
+           return view('Admin.index', compact('totalMedicos', 'consultasPendentes',
+                                            'consultasCanceladas', 'totalConsultas', 'totalPacientes', 'consultasPer'));
 
         }elseif(Auth::user()->id == 2){
 
@@ -94,3 +112,4 @@ class HomeController extends Controller
         
     }
 }
+

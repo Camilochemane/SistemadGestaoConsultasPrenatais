@@ -14,11 +14,11 @@
 Route::get('/', function () {
 	 // $nexmo  = app('Nexmo\Client');
   //                   $nexmo->message()->send([
-  //                   'to'    => '258842317035',
-  //                   'from'  => 'Carlitos',
-  //                   'text'  => 'Mensagem enviada por '.config('Carlitos', ' Carlitos Hair Internactional').' Caro cliente foste Bloqueado pelo numro excessivo de reservas nao compridas'
+  //                   'to'    => '258841239108',
+  //                   'from'  => 'CSP',
+  //                   'text'  => 'Mensagem enviada por '.config('CSP', ' Centro de Saúde da Polana').'Caro utente, a sua consulta esta marcada para daqui a uma semana'
   //                   ]); 
-    return view('welcome');
+     return view('welcome');
     // return view('home.home');
 });
 
